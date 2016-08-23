@@ -19,6 +19,9 @@ public class Principal extends javax.swing.JFrame {
      */
     public Principal() {
         initComponents();
+        cmdLlenar.setEnabled(false);
+        cmdLlenadoAutomatico.setEnabled(false);
+        cmdMostrar.setEnabled(false);
     }
 
     /**
@@ -37,7 +40,7 @@ public class Principal extends javax.swing.JFrame {
         txtLongitud = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         cmdCrear = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        cmdLlenar = new javax.swing.JButton();
         cmdMostrar = new javax.swing.JButton();
         cmdBorrar = new javax.swing.JButton();
         cmdLlenadoAutomatico = new javax.swing.JButton();
@@ -77,10 +80,10 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Llenar Manual");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        cmdLlenar.setText("Llenar Manual");
+        cmdLlenar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                cmdLlenarActionPerformed(evt);
             }
         });
 
@@ -118,27 +121,27 @@ public class Principal extends javax.swing.JFrame {
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(cmdBorrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(cmdMostrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cmdLlenar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(cmdCrear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(21, 21, 21))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(32, 32, 32)
+                .addContainerGap()
                 .addComponent(cmdCrear)
                 .addGap(18, 18, 18)
-                .addComponent(jButton2)
+                .addComponent(cmdLlenar)
                 .addGap(18, 18, 18)
                 .addComponent(cmdLlenadoAutomatico)
                 .addGap(18, 18, 18)
                 .addComponent(cmdMostrar)
                 .addGap(18, 18, 18)
                 .addComponent(cmdBorrar)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(342, 60, 130, 260));
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(342, 60, 140, 260));
 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Resultado"));
 
@@ -169,16 +172,15 @@ public class Principal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 540, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 510, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 346, Short.MAX_VALUE)
         );
 
-        pack();
+        setSize(new java.awt.Dimension(526, 385));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void cmdCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdCrearActionPerformed
@@ -196,8 +198,13 @@ public class Principal extends javax.swing.JFrame {
             longitud = Integer.parseInt(txtLongitud.getText());
             v = new double[longitud];
 
-            JOptionPane.showMessageDialog(this, "Vector creado satisfactoriamente");
-            txtLongitud.setText("");
+            JOptionPane.showMessageDialog(this, "Vector creado satisfactoriamente");            
+            cmdCrear.setEnabled(false);
+            cmdLlenar.setEnabled(true);
+            cmdLlenadoAutomatico.setEnabled(true);
+            cmdMostrar.setEnabled(false);
+            cmdBorrar.setEnabled(true);
+            txtLongitud.setEditable(false);
         }
 
     }//GEN-LAST:event_cmdCrearActionPerformed
@@ -212,22 +219,31 @@ public class Principal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_txtLongitudKeyTyped
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void cmdLlenarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdLlenarActionPerformed
         // TODO add your handling code here:
         double n;
         for (int i = 0; i < v.length; i++) {
             n = Double.parseDouble(JOptionPane.showInputDialog(this, "Digite el elemento en la posicion " + i));
             v[i] = n;
         }
+        cmdCrear.setEnabled(false);
+        cmdLlenar.setEnabled(false);
+        cmdLlenadoAutomatico.setEnabled(false);
+        cmdMostrar.setEnabled(true);
+        cmdBorrar.setEnabled(true);
 
-
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_cmdLlenarActionPerformed
 
     private void cmdMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdMostrarActionPerformed
         // TODO add your handling code here:
         for (int i = 0; i < v.length; i++) {
             txtResultado.append("" + v[i] + "\n");
         }
+        cmdCrear.setEnabled(false);
+        cmdLlenar.setEnabled(false);
+        cmdLlenadoAutomatico.setEnabled(false);
+        cmdMostrar.setEnabled(false);
+        cmdBorrar.setEnabled(true);
     }//GEN-LAST:event_cmdMostrarActionPerformed
 
     private void cmdBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdBorrarActionPerformed
@@ -236,17 +252,27 @@ public class Principal extends javax.swing.JFrame {
         txtLongitud.setText("");
         txtLongitud.requestFocusInWindow();
         v = null;
-
+        cmdCrear.setEnabled(true);
+        cmdLlenar.setEnabled(false);
+        cmdLlenadoAutomatico.setEnabled(false);
+        cmdMostrar.setEnabled(false);
+        cmdBorrar.setEnabled(true);
+        txtLongitud.setEditable(true);
     }//GEN-LAST:event_cmdBorrarActionPerformed
 
     private void cmdLlenadoAutomaticoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdLlenadoAutomaticoActionPerformed
         // TODO add your handling code here:
         int n;
-        for(int i = 0; i < v.length; i++){
-        n = (int) (Math.random()*25+1);
-        v[i] = n;
+        for (int i = 0; i < v.length; i++) {
+            n = (int) (Math.random() * 25 + 1);
+            v[i] = n;
         }
-        
+        cmdCrear.setEnabled(false);
+        cmdLlenar.setEnabled(false);
+        cmdLlenadoAutomatico.setEnabled(false);
+        cmdMostrar.setEnabled(true);
+        cmdBorrar.setEnabled(true);
+
     }//GEN-LAST:event_cmdLlenadoAutomaticoActionPerformed
 
     /**
@@ -289,8 +315,8 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton cmdBorrar;
     private javax.swing.JButton cmdCrear;
     private javax.swing.JButton cmdLlenadoAutomatico;
+    private javax.swing.JButton cmdLlenar;
     private javax.swing.JButton cmdMostrar;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
