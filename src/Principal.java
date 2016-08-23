@@ -40,6 +40,7 @@ public class Principal extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         cmdMostrar = new javax.swing.JButton();
         cmdBorrar = new javax.swing.JButton();
+        cmdLlenadoAutomatico = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtResultado = new javax.swing.JTextArea();
@@ -76,7 +77,7 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Llenar");
+        jButton2.setText("Llenar Manual");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -97,31 +98,44 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
+        cmdLlenadoAutomatico.setText("Auto Llenado");
+        cmdLlenadoAutomatico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdLlenadoAutomaticoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(28, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(cmdBorrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(cmdMostrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(cmdCrear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(cmdLlenadoAutomatico, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(cmdBorrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cmdMostrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cmdCrear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(21, 21, 21))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap(65, Short.MAX_VALUE)
+                .addGap(32, 32, 32)
                 .addComponent(cmdCrear)
                 .addGap(18, 18, 18)
                 .addComponent(jButton2)
                 .addGap(18, 18, 18)
+                .addComponent(cmdLlenadoAutomatico)
+                .addGap(18, 18, 18)
                 .addComponent(cmdMostrar)
                 .addGap(18, 18, 18)
                 .addComponent(cmdBorrar)
-                .addGap(26, 26, 26))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(342, 60, 130, 260));
@@ -225,6 +239,16 @@ public class Principal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_cmdBorrarActionPerformed
 
+    private void cmdLlenadoAutomaticoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdLlenadoAutomaticoActionPerformed
+        // TODO add your handling code here:
+        int n;
+        for(int i = 0; i < v.length; i++){
+        n = (int) (Math.random()*25+1);
+        v[i] = n;
+        }
+        
+    }//GEN-LAST:event_cmdLlenadoAutomaticoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -264,6 +288,7 @@ public class Principal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cmdBorrar;
     private javax.swing.JButton cmdCrear;
+    private javax.swing.JButton cmdLlenadoAutomatico;
     private javax.swing.JButton cmdMostrar;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
